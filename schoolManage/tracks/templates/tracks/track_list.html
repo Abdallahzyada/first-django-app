@@ -1,0 +1,30 @@
+{%extends 'index.html'%}
+{%block about%}
+
+
+<a href="{%url 'trackAdd'%}">New Track</a>
+<table border="3">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+   
+  </tr>
+  {%for track in tracks%}
+  <tr>
+    <td style="width: 150px; text-align: center; padding: 5px">
+      {{track.id}}
+    </td>
+    <td style="width: 150px; text-align: center; padding: 5px">
+      {{track.name}}
+    </td>
+    <td >
+
+      <a href='{%url "trackDelete" track.id %}'>Delete</a>
+
+      <a href='{%url "track_update" track.id %}'>Update</a>
+    </td>
+  </tr>
+  {%endfor%}
+</table>
+{%endblock%}
+<!-- ========== End Section ========== -->

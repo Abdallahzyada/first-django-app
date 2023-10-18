@@ -1,0 +1,30 @@
+{%extends 'index.html'%}
+{%block title%}
+Trainee List
+{%endblock%}
+{%block about%}
+<form method="GET" action="{% url 'trainee_list' %}">
+  <input type="text" name="search" placeholder="Search trainees">
+  <button type="submit">Search</button>
+</form>
+  <a href="{%url 'trainee_add'%}">New Student</a>
+  <table border="1" width="100%">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Track</th>
+      <th>Actions</th>
+    </tr>
+    {%for train in trainees%}
+      <tr>
+        <td>{{train.id}}</td>
+        <td>{{train.name}}</td>
+        <td>{{train.track.name}}</td>
+        <td>
+          <a href="{%url 'trainee_update' train.id%}">Updated</a>
+          <a href="{%url 'trainee_delete' train.id%}">Delete</a>
+        </td>
+      </tr>
+    {%endfor%}
+  </table>
+{%endblock%}

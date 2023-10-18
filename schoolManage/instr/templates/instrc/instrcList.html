@@ -1,0 +1,28 @@
+{%extends 'index.html'%}
+
+{%block title%}
+Instructors List
+  {%endblock%}
+
+{%block about%}
+<table border="2" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    {%for instr in inst%}
+    <tr>
+        <td>{{instr.id}}</td>
+        <td>{{instr.name}}</td>
+        <td>
+            <a href="{%url 'instrcUpdatee' instr.id%}">Updated</a>
+            <a href="{%url 'instrcDelete' instr.id%}">Delete</a>
+        </td>
+    </tr>
+
+    {%endfor%}
+
+</table>
+<a href="{%url 'instrcAdd'%}">Add Instructors</a>
+    {%endblock%}
